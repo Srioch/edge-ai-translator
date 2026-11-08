@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>段译 · 扩展设置</title>
+  <link rel="stylesheet" href="ui.css">
+  <script type="module" src="options.js"></script>
+</head>
+<body class="options">
+  <header class="settings-head">
+    <div class="head-inner">
+      <span class="brand"><img src="icons/icon48.png" alt="" width="34" height="34"><span>段译</span></span>
+      <span class="head-divider" aria-hidden="true"></span><span class="head-sub">扩展设置</span>
+    </div>
+  </header>
+  <main class="settings-layout">
+    <section class="config-area" aria-labelledby="page-title">
+      <div class="section-intro">
+        <div class="title-line"><h1 id="page-title">翻译服务</h1><span class="save-state" id="save-state">正在读取</span></div>
+        <p>使用自己的 API Key，调用费用由所选服务商结算。</p>
+      </div>
+      <form id="config-form" class="form-card">
+        <div class="field">
+          <label for="provider">服务商</label>
+          <select id="provider" required disabled></select>
+        </div>
+        <div class="field">
+          <label for="base-url">API 地址</label>
+          <input id="base-url" type="url" placeholder="https://api.example.com/v1" spellcheck="false" autocomplete="off" required>
+          <p class="field-help" id="address-help">填写服务商的基础地址。</p>
+        </div>
+        <div class="field">
+          <label for="model">模型名称</label>
+          <input id="model" type="text" placeholder="输入服务商提供的模型 ID" spellcheck="false" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="api-key">API Key</label>
+          <div class="password-field">
+            <input id="api-key" type="password" spellcheck="false" autocomplete="off" aria-describedby="key-help" required>
+            <button id="reveal-key" class="reveal" type="button" aria-label="显示 Key" aria-pressed="false">显示</button>
+          </div>
+          <p class="field-help" id="key-help">Key 保存在本机的扩展存储中。</p>
+        </div>
+        <div class="field" id="workspace-field" hidden>
+          <label for="workspace-id">Workspace ID <span class="optional">可选</span></label>
+          <input id="workspace-id" type="text" spellcheck="false" autocomplete="off" placeholder="wrkspc_…">
+          <p class="field-help">仅在使用要求指定工作区的 Claude Key 时填写。</p>
+        </div>
+        <div class="notice" id="config-notice" role="status" aria-live="polite" hidden></div>
+        <div class="form-actions">
+          <button id="save" type="submit" class="button primary" disabled>保存设置</button>
+          <button id="test" type="button" class="button secondary" disabled>测试连接</button>
+        </div>
+      </form>
+      <button type="button" class="text-button clear-button" id="clear-config" hidden>清除本机配置</button>
+      <button type="button" class="text-button clear-button" id="clear-cache">清除译文缓存</button>
+    </section>
+    <aside aria-labelledby="usage-heading" class="usage">
+      <h2 id="usage-heading">阅读操作</h2>
+      <dl>
+        <dt>整页翻译</dt><dd>在网页上按 <kbd>Alt</kbd> + <kbd>A</kbd>，直接翻译当前整页。可以在 Edge 的扩展键盘快捷方式中更改。</dd>
+        <dt>翻译范围</dt><dd>弹窗默认翻译正文；选择「整页」可同时翻译导航、侧栏和页脚。</dd>
+        <dt>网站自动翻译</dt><dd>在弹窗里打开「总是翻译此网站」。</dd>
+        <dt>单段翻译</dt><dd>启用后，按住 <kbd>Alt</kbd> 并悬停在段落上。</dd>
+        <dt>划词翻译</dt><dd>选中文字后右键，点击「翻译选中内容」。</dd>
+      </dl>
+    </aside>
+  </main>
+</body>
+</html>

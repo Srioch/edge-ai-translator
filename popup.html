@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>段译 · 网页翻译</title>
+  <link rel="stylesheet" href="ui.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body class="popup">
+  <header class="popup-head">
+    <span class="brand"><img src="icons/icon48.png" alt="" width="32" height="32"><span>段译</span></span>
+    <button type="button" class="icon-button" id="open-settings" title="扩展设置" aria-label="打开扩展设置">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 3-.7 2.1-1.7 1-2.2-.4-2 3.4 1.5 1.7v2.4l-1.5 1.7 2 3.4 2.2-.4 1.7 1 .7 2.1h4l.7-2.1 1.7-1 2.2.4 2-3.4-1.5-1.7v-2.4l1.5-1.7-2-3.4-2.2.4-1.7-1L14 3z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+  </header>
+  <main>
+    <div class="site-line">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.3"/><ellipse cx="10" cy="10" rx="3.2" ry="7.3"/><path d="M3.4 8h13.2M3.4 12h13.2"/></svg>
+      <span id="current-site">当前页面</span>
+    </div>
+    <section id="setup-box" class="setup-box" hidden>
+      <h1>连接翻译服务</h1>
+      <p>选择模型并填写你的 API Key，即可开始翻译。</p>
+      <button id="connect" type="button" class="button primary">配置 API Key</button>
+    </section>
+    <section id="mode-box">
+      <h1 class="mode-label">阅读模式</h1>
+      <div class="modes" role="group" aria-label="阅读模式">
+        <button type="button" data-mode="bilingual" aria-pressed="false" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h15M4 9h11M7 15h13M7 19h9M3 14v6"/></svg>双语
+        </button>
+        <button type="button" data-mode="translation" aria-pressed="false" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h10M8 3v2M5 5c.5 4 3.1 7.2 7.6 9.4M11.8 5c-.5 4-3.3 7.5-8.1 10M14 20l4-10 4 10M15.4 17h5.2"/></svg>仅译文
+        </button>
+        <button type="button" data-mode="original" aria-pressed="false" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14M5 10h14M5 15h14M5 20h8"/></svg>原文
+        </button>
+      </div>
+      <div class="scope-row">
+        <span>翻译范围</span>
+        <div class="scope-choice" role="group" aria-label="翻译范围">
+          <button type="button" data-scope="main" aria-pressed="true" disabled>正文</button>
+          <button type="button" data-scope="full" aria-pressed="false" disabled>整页 <small id="full-shortcut" hidden></small></button>
+        </div>
+      </div>
+      <label class="toggle-row">
+        <span>总是翻译此网站</span>
+        <input id="auto-site" type="checkbox" role="switch" disabled>
+        <span class="switch" aria-hidden="true"></span>
+      </label>
+    </section>
+    <div class="notice" id="popup-notice" role="status" aria-live="polite" hidden></div>
+    <button class="button secondary retry" id="retry" type="button" hidden>重试失败段落</button>
+  </main>
+  <footer class="popup-foot"><kbd>Alt</kbd><span>＋ 悬停译一段</span><span class="foot-dot" aria-hidden="true">·</span><span>划词后右键翻译</span></footer>
+</body>
+</html>
